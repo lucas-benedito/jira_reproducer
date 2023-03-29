@@ -1,0 +1,58 @@
+- name: Create Worflows, Run jobs & Delete Worflows
+  hosts: localhost
+  vars_files:
+    - vars.yaml
+  environment:
+    CONTROLLER_HOST: "{{ controller_host }}"
+    CONTROLLER_PASSWORD: "{{ controller_password }}"
+    CONTROLLER_USERNAME: "{{ controller_username }}"
+    CONTROLLER_VERIFY_SSL: "{{ validate_certs }}"
+  tasks:
+
+  - name: Copy Job Template
+    ansible.controller.job_template:
+      name: Copy Demo Job Template
+      copy_from: Demo Job Template
+      state: "present"
+  - name: Create workflow in controller
+    ansible.controller.workflow_job_template:
+      name: AAP-9800-workflow
+      inventory: Demo Inventory
+      workflow_nodes:
+        - identifier: node1
+          unified_job_template:
+            name: Demo Project
+            type: project
+          related:
+            success_nodes:
+              - identifier: node2
+            failure_nodes: []
+            always_nodes: []
+            credentials: []
+        - identifier: node2
+          unified_job_template:
+            organization:
+              name: Default
+            name: Copy Demo Job Template
+            type: job_template
+          credentials: []
+          related:
+            success_nodes: []
+            failure_nodes: []
+            always_nodes: []
+            credentials: []
+  - name: Run newly created workflow
+    ansible.controller.workflow_launch:
+      workflow_template: "AAP-9800-workflow"
+    register: result
+  - name: Debug Workflow Run
+    ansible.builtin.debug:
+      var: result
+  - name: Delete workflow from controller
+    ansible.controller.workflow_job_template:
+      name: AAP-9800-workflow
+      state: absent
+  - name: Copy Job Template
+    ansible.controller.job_template:
+      name: Copy Demo Job Template
+      state: "absent"
