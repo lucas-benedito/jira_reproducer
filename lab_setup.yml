@@ -1,0 +1,24 @@
+- name: Create Project and Job Template
+  hosts: localhost
+  vars_files:
+    - vars.yaml
+  environment:
+    CONTROLLER_HOST: "{{ controller_host }}"
+    CONTROLLER_PASSWORD: "{{ controller_password }}"
+    CONTROLLER_USERNAME: "{{ controller_username }}"
+    CONTROLLER_VERIFY_SSL: "{{ validate_certs }}"
+  tasks:
+    - name: Create Project
+      ansible.controller.project:
+        name: Jira Reproducer
+        scm_type: scm
+        scm_url: https://github.com/lucas-benedito/jira_reproducer.git
+    - name: Create Controller credential
+      ansible.controller.credential:
+        name: Controller
+        credential_type: Red Hat Ansible Automation Platform
+        inputs:
+          host: "{{ controller_host }}"
+          username: "{{ controller_username }}"
+          password: "{{ controller_password }}"
+        validate_certs: "{{ validate_certs }}"

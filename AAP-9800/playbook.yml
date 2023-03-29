@@ -1,12 +1,5 @@
 - name: Create Worflows, Run jobs & Delete Worflows
   hosts: localhost
-  vars_files:
-    - vars.yaml
-  environment:
-    CONTROLLER_HOST: "{{ controller_host }}"
-    CONTROLLER_PASSWORD: "{{ controller_password }}"
-    CONTROLLER_USERNAME: "{{ controller_username }}"
-    CONTROLLER_VERIFY_SSL: "{{ validate_certs }}"
   tasks:
 
     - name: Copy Job Template
