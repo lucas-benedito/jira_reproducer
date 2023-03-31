@@ -11,7 +11,7 @@
     - name: Create Project
       ansible.controller.project:
         name: Jira Reproducer
-        scm_type: scm
+        scm_type: git
         scm_url: https://github.com/lucas-benedito/jira_reproducer.git
     - name: Create Controller credential
       ansible.controller.credential:
@@ -22,3 +22,4 @@
           username: "{{ controller_username }}"
           password: "{{ controller_password }}"
         validate_certs: "{{ validate_certs }}"
+        organization: Default
