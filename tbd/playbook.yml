@@ -1,0 +1,6 @@
+- name: Import user failing due to org assignment
+  hosts: all
+  tasks:
+  - name: Import local file
+    ansible.controller.import:
+      assets: "{{ lookup('file', 'output.json') | from_json() }}"
