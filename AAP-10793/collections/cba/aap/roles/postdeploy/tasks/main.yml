@@ -1,7 +1,0 @@
----
-- name: Configure the automation Controller
-  hosts: localhost
-  tasks:
-  - name: Am I running?
-    ansible.builtin.debug:
-      msg: "Role postdeploy running correctly"
