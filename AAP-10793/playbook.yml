@@ -2,7 +2,9 @@
 - name: AAP-10793
   hosts: localhost
   gather_facts: false
+  roles:
+    - cba.aap.postdeploy
   tasks:
-  - name: Including postdeploy
-    ansible.builtin.include_role:
-      name: cba.aap.postdeploy
+    - name: Including postdeploy
+      ansible.builtin.include_role:
+        name: cba.aap.postdeploy
