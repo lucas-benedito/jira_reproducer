@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  gather_facts: false
+
+  roles:
+    - name: cba.aap
+      role: postdeploy
