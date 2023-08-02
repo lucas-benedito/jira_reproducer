@@ -1,0 +1,22 @@
+[aap]
+lbenedit-ctrl-node1 ansible_host=vm-10-1-230-103.ans.cee.ral3.lab.eng.rdu2.redhat.com
+lbenedit-ctrl-node2 ansible_host=vm-10-1-230-102.ans.cee.ral3.lab.eng.rdu2.redhat.com
+
+[automationhub]
+lbenedit-ah-node1 ansible_host=vm-10-1-230-235.ans.cee.ral3.lab.eng.rdu2.redhat.com
+
+[database]
+lbenedit-pg-node ansible_host=vm-10-1-230-234.ans.cee.ral3.lab.eng.rdu2.redhat.com
+
+[execnode]
+lbenedit-exec-node1 ansible_host=vm-10-1-230-100.ans.cee.ral3.lab.eng.rdu2.redhat.com
+lbenedit-exec-node2 ansible_host=vm-10-1-230-97.ans.cee.ral3.lab.eng.rdu2.redhat.com
+
+[hop]
+lbenedit-hop-node1 ansible_host=vm-10-1-230-213.ans.cee.ral3.lab.eng.rdu2.redhat.com
+
+[sso]
+lbenedit-sso-node ansible_host=vm-10-1-230-96.ans.cee.ral3.lab.eng.rdu2.redhat.com
+
+[eda]
+lbenedit-eda-node1 ansible_host=vm-10-1-230-212.ans.cee.ral3.lab.eng.rdu2.redhat.com

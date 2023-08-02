@@ -1,0 +1,26 @@
+- name: Setup AAP-3470
+  hosts: localhost
+  tasks:
+    - name: Create scm project in controller
+      ansible.controller.project:
+        name: aap-3470
+        organization: Default
+        state: present
+        scm_type: git
+        scm_url: https://github.com/lucas-benedito/jira_reproducer.git
+    - name: Create inventory
+      ansible.controller.inventory:
+        name: aap-3470
+        organization: Default
+        state: present
+    - name: Create inventory source from project
+      ansible.controller.inventory_source:
+        name: aap-3470
+        organization: Default
+        inventory: aap-3470
+        source_project: aap-3470
+        source: scm
+        overwrite: true
+    - name: End of playbook
+      ansible.builtin.debug:
+        msg: "Completed"
