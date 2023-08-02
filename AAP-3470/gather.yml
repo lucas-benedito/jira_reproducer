@@ -10,6 +10,15 @@
           - '!facter'
           - '!ohai'
         filter: ansible_local
+    - name: Set a fact with a task
+      ansible.builtin.set_fact:
+        foo: "bar"
+        bar:
+          a:
+            b:
+              - "c"
+              - "d"
+        cacheable: true
     - name: Debug local facts
       ansible.builtin.debug:
         var: ansible_local
