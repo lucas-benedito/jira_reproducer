@@ -1,0 +1,22 @@
+- name: Setup test environment
+  hosts: all
+  become: true
+  tasks:
+    - name: Create directory
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        owner: root
+        group: root
+        mode: '0644'
+      loop:
+        - /etc/ansible/facts.d
+    - name: Create facts files
+      ansible.builtin.copy:
+        dest: "{{ item }}"
+        content: '{"build": "test_env"}'
+        owner: root
+        group: root
+        mode: '0644'
+      loop:
+        - /etc/ansible/facts.d/node.fact
