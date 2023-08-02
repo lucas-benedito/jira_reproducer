@@ -1,0 +1,6 @@
+- name: Fact Gathering test
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Clear gathered facts from all currently targeted hosts
+    meta: clear_facts
